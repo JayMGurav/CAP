@@ -6,9 +6,10 @@
       "@/utils/*": ["utils/*"],
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
+      "@/theme/*": ["theme/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/graphql/*": ["graphql/*"],
-      "@/models/*": ["models/*"],
+      "@/graphql/*": ["src/graphql/*"],
+      "@/models/*": ["src/models/*"],
     }
   }
 }

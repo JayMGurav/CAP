@@ -4,6 +4,8 @@ import { Magic } from 'magic-sdk'
 
 export default function Login() {
   const router = useRouter()
+
+  
   const handleSubmit = async (event) => {
     event.preventDefault()
 
