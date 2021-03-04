@@ -4,11 +4,11 @@ const theme = extendTheme({
   styles: {
     global: {
       "html, body": {
-        color: "gray.50",
-        bg:"gray.800"
+        bg:"gray.50",
+        overflow:"hidden"
       },
       "h1, h2, h3, h4, h5, h6":{
-        color:"#f7fafc"
+        color:"#63b3ed"
       }
     },
   },

@@ -14,7 +14,7 @@ const client = new ApolloClient({
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
-      <ChakraProvider resetCSS theme={theme} >
+      <ChakraProvider theme={theme} >
         <Component {...pageProps} />
       </ChakraProvider>
     </ApolloProvider>
