@@ -12,9 +12,9 @@ import NextLink from 'next/link'
 
 export default function Footer() {
   return(
-  <Flex w="full" justify="space-between" align="center" py={2} px={8} bg="white" gap>
+  <Flex w="full" justify="space-between" align="center" py={2} px={8} bg="white" >
     <Box>
-      <Text as="span" fontSize="xl" fontWeight="semibold">🎓 xyz</Text>
+      <Text as="span" fontSize="xl" fontWeight="semibold">🎓 milo</Text>
     </Box>
     <HStack spacing={2}>
     <NextLink href="/"><Link>Home</Link></NextLink>

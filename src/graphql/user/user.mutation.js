@@ -1,9 +1,11 @@
 export default {
-  addUser: async (_, { fullname }, { models }) => {
+  addUser: async (_, {  fullname, email, summary}, { models }) => {
     try {
       if(!fullname) throw new AuthenticationError('fullname is required');
       return await models.User.create({
-        fullname
+        fullname,
+        email,
+        summary,
       })
     } catch (error) {
       console.error('Error adding user to DB :', error.message);
