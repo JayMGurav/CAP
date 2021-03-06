@@ -43,7 +43,7 @@ export default function Login() {
           headers: { Authorization: `Bearer ${did}` }
         })
         if (authRequest.ok) {
-          router.push('/dashboard');
+          router.push('/dashboard/home');
         }
       }
     }

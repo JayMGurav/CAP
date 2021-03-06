@@ -15,7 +15,7 @@ const USERS = gql`
 
 
 
-export default function Dashboard() {
+export default function Home() {
   const { user, loading } = useAuth();;
   const { loading:dataLoading, error, data } = useQuery(USERS);
 
@@ -23,7 +23,9 @@ export default function Dashboard() {
   console.log({data,error, dataLoading});
   
   return (
-    <DashboardShell/>
+    <DashboardShell>
+      <Heading>Home</Heading>
+    </DashboardShell>
   );
 }
     // <>

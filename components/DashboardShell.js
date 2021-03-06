@@ -82,7 +82,7 @@ function ProfileBox({user}) {
 }
 
 
-export default function DashboardShell() {
+export default function DashboardShell({children}) {
   return(
     <>
       <Head>
@@ -99,8 +99,8 @@ export default function DashboardShell() {
             <ProfileBox user={user}/>
             <SideBarList/>
           </Flex>
-          <Flex as="main" px="4" py="0" flex="4 4 0%" bg="blue.100">
-            <Heading>Dashboard</Heading>
+          <Flex as="main" p="4" flex="4 4 0%"  overflowY="auto">
+            {children}
           </Flex>
         </Flex>
       </Flex> 
