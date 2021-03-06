@@ -5,7 +5,7 @@ const theme = extendTheme({
     global: {
       "html, body": {
         bg:"gray.50",
-        overflow:"hidden"
+        // overflow:"hidden"
       },
       "h1, h2, h3, h4, h5, h6":{
         color:"#63b3ed"

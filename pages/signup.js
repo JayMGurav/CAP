@@ -61,7 +61,7 @@ export default function Login() {
     <Flex h="100%" align="center" justify="center" direction="column" >
       <Heading as="span" size="2xl">🎓</Heading>
       <Heading as="h2" color="gray.900">Sign up</Heading>
-    <Flex as="form" direction="column" onSubmit={handleSubmit(onSubmit)} maxW="sm">
+    <Flex as="form" px={4} direction="column" onSubmit={handleSubmit(onSubmit)} w={["xs","sm"]}>
       <Box my={6} >
       <FormControl>
         <FormLabel mb={0} mt={2}>Email</FormLabel>
@@ -106,7 +106,7 @@ export default function Login() {
       </FormControl>
       </Box>
       <Text fontWeight="semibold"  textAlign="center" color="gray.500">By proceeding, you are agreeing to XYZ's <Link color="blue">Terms and Conditions</Link> and <Link color="blue">Privacy Policy</Link></Text>
-      <Button type="submit" size="md" colorScheme="blue" borderRadius="lg" my={6}>Create account</Button>
+      <Button type="submit" colorScheme="blue" borderRadius="lg" my={6}>Create account</Button>
     </Flex>
     </Flex>
     </Layout>

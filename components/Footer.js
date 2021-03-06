@@ -12,16 +12,16 @@ import NextLink from 'next/link'
 
 export default function Footer() {
   return(
-  <Flex w="full" justify="space-between" align="center" py={2} px={8} bg="white" >
+  <Flex w="full" justify="center" direction="column" align="center" py={4} px={[2,6]} bg="white" >
     <Box>
       <Text as="span" fontSize="xl" fontWeight="semibold">🎓 milo</Text>
     </Box>
-    <HStack spacing={2}>
-    <NextLink href="/"><Link>Home</Link></NextLink>
-    <NextLink href="/legal"><Link>Legal</Link></NextLink>
-    <NextLink href="/terms"><Link>Terms and Conditions</Link></NextLink>
-    <NextLink href="/privacy"><Link>Privacy</Link></NextLink>
-    </HStack>
+    <Flex direction={["column", "row"]} justify="center" align="center">
+      <NextLink href="/"  ><Link m={1}>Home</Link></NextLink>
+      <NextLink href="/legal"  ><Link m={1}>Legal</Link></NextLink>
+      <NextLink href="/privacy"  ><Link m={1}>Privacy</Link></NextLink>
+      <NextLink href="/terms"  ><Link m={1}>Terms and Conditions</Link></NextLink>
+    </Flex>
   </Flex>
   )
 }

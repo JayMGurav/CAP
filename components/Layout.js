@@ -10,7 +10,7 @@ export default function Layout({children}) {
   return(
   <Box  w="full" maxH="100vh">
     <Navbar/>
-    <Box  h="calc(100vh - 6rem)" w="full" overflowY="auto">
+    <Box h="90vh" w="full" overflowY="auto">
     {children}
     </Box>
     <Footer/>

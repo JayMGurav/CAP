@@ -16,18 +16,22 @@ import {
 
 import Layout from '@/components/Layout'
 import { IS_USER } from 'gql/queries/user.query';
+import { useState } from 'react';
 
 
 export default function Login() {
   const router = useRouter()
   const { register, handleSubmit, errors } = useForm();
+  const [userData, setUserData] = useState();
   const [checkIsUser] = useLazyQuery(IS_USER,{
     onCompleted: async ({isUser}) => {
       if(!isUser){
         // set global error state to signup required
         router.push('/signup');
       }else{
-        const did = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).auth.loginWithMagicLink({ email: data.email })
+        // console.log(userData);
+        
+        const did = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).auth.loginWithMagicLink({ email: userData.email })
     // Once we have the token from magic,
     /**
      * save user in context
@@ -47,6 +51,7 @@ export default function Login() {
   
   
   const onSubmit = async (data) => {
+    setUserData(data);
    checkIsUser({
       variables: {
         email: data?.email
@@ -60,7 +65,7 @@ export default function Login() {
     <Flex h="100%" align="center" justify="center" direction="column" >
       <Heading as="span" size="2xl">🎓</Heading>
       <Heading as="h2" color="gray.900">Login </Heading>
-    <Flex as="form" my={6} p={4} direction="column" onSubmit={handleSubmit(onSubmit)} w="sm">
+    <Flex as="form" my={6} p={4} direction="column" onSubmit={handleSubmit(onSubmit)} w={["xs","sm"]}>
       <FormControl>
         <Input 
           name="email" 
@@ -74,7 +79,7 @@ export default function Login() {
         />
         <FormErrorMessage>{errors.email?.message}</FormErrorMessage>
       </FormControl>
-      <Button size="md" colorScheme="blue" borderRadius="lg" my={6}  disabled={disabled} type="submit">Log in</Button>
+      <Button size="md" colorScheme="blue" borderRadius="lg" my={6}  type="submit">Log in</Button>
       <Text fontWeight="semibold"  textAlign="center" color="gray.500">No account? <Link color="blue">Sign up</Link></Text>
     </Flex>
     </Flex>
