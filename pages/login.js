@@ -19,6 +19,8 @@ import { IS_USER } from 'gql/queries/user.query';
 import { useState } from 'react';
 
 
+const magic = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).preload()
+
 export default function Login() {
   const router = useRouter()
   const { register, handleSubmit, errors } = useForm();
@@ -31,18 +33,21 @@ export default function Login() {
       }else{
         // console.log(userData);
         
-        const did = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).auth.loginWithMagicLink({ email: userData.email })
+        // const magic = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).preload()
+        const did = magic.auth.loginWithMagicLink({ email: userData.email })
     // Once we have the token from magic,
     /**
      * save user in context
      * 
      * 
      */
-        const authRequest = await fetch('/api/login', {
-          method: 'POST',
-          headers: { Authorization: `Bearer ${did}` }
-        })
-        if (authRequest.ok) {
+        // const authRequest = await fetch('/api/login', {
+        //   method: 'POST',
+        //   headers: { Authorization: `Bearer ${did}` }
+        // })
+        // if (authRequest.ok) {
+        await localStorage.setItem('token', did);
+        if (did) {
           router.push('/dashboard/home');
         }
       }

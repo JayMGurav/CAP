@@ -29,25 +29,30 @@ export default function Login() {
   const onSubmit = async ({email, fullname,summary}) => {
     console.log({email, fullname,summary});
     try {
-      const did = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).auth.loginWithMagicLink({ email: email })
+      const magic = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).preload()
+      const did = magic.auth.loginWithMagicLink({ email: email });
 
     /**
      * save user in context
      * 
      * 
      */
-      addUser({
+      await addUser({
         variables:{
           email,
           fullname,
           summary
         }
       })
-      const authRequest = await fetch('/api/login', {
-        method: 'POST',
-        headers: { Authorization: `Bearer ${did}` }
-      })
-      if (authRequest.ok) {
+      // const authRequest = await fetch('/api/login', {
+      //   method: 'POST',
+      //   headers: { Authorization: `Bearer ${did}` }
+      // })
+      // if (authRequest.ok) {
+      //   router.push('/dashboard/home');
+      // }
+      await localStorage.setItem('token', did);
+      if (did) {
         router.push('/dashboard/home');
       }
     } catch (error) {

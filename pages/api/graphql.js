@@ -1,4 +1,4 @@
-
+import {Magic} from '@magic-sdk/admin';
 import { ApolloServer} from 'apollo-server-micro'
 import mongoose from 'mongoose';
 
@@ -6,11 +6,16 @@ import models from '@/models/index'
 import schema from '@/graphql/index'
 
 let db;
-
+let magic = new Magic(process.env.MAGIC_SECRET_KEY);
 
 const apolloServer = new ApolloServer({
   schema,
-  context: async () => {
+  context: async ({ req }) => {
+
+    const didToken = magic.utils.parseAuthorizationHeader(req.headers.authorization);
+    const user = await new Magic(process.env.MAGIC_SECRET_KEY).users.getMetadataByToken(didToken)
+
+
     if(!db){
       try {
         await mongoose.connect(process.env.MONGODB_URL, {
@@ -29,6 +34,8 @@ const apolloServer = new ApolloServer({
          * 
          *   let token = req.headers.authorization;
          *   let user = getUser(token);
+         * 
+         *    add user login context
          */
 
       } catch (error) {
@@ -37,7 +44,7 @@ const apolloServer = new ApolloServer({
     }
 
     return {
-      db,
+      user,
       models
     }
    }
