@@ -19,7 +19,6 @@ import { IS_USER } from 'gql/queries/user.query';
 import { useState } from 'react';
 
 
-const magic = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).preload()
 
 export default function Login() {
   const router = useRouter()
@@ -27,6 +26,7 @@ export default function Login() {
   const [userData, setUserData] = useState();
   const [checkIsUser] = useLazyQuery(IS_USER,{
     onCompleted: async ({isUser}) => {
+      console.log({isUser})
       if(!isUser){
         // set global error state to signup required
         router.push('/signup');
@@ -34,7 +34,7 @@ export default function Login() {
         // console.log(userData);
         
         // const magic = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).preload()
-        const did = magic.auth.loginWithMagicLink({ email: userData.email })
+        const did = await new Magic(process.env.NEXT_PUBLIC_MAGIC_PUB_KEY).auth.loginWithMagicLink({ email: userData.email })
     // Once we have the token from magic,
     /**
      * save user in context

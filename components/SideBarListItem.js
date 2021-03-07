@@ -5,7 +5,6 @@ import {
   List,
   Box,
   ListItem,
-  LinkOverlay 
 } from '@chakra-ui/react'
 
 
@@ -33,8 +32,6 @@ function Item({item,href,i}) {
 
   return(
     <ListItem 
-      // as="a"
-      fontSize="xl"
       fontWeight="semibold"
       px="4" 
       py="3"

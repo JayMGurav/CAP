@@ -4,16 +4,13 @@ import {
   HStack,
   Box,
   Text,
-  Heading,
   Spacer,
   Avatar,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  Button,
-  List,
-  ListItem,
+  Button,,
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import Head from 'next/head';
@@ -61,7 +58,7 @@ function DashboardNavbar({userfullname, profileImgSrc}){
             <MenuItem borderRadius="md">Logout</MenuItem>
           </MenuList>
         </Menu>
-        <Avatar size="md" name={userfullname} src={profileImgSrc} bg="gray.300"/>
+        <Avatar size="sm" name={userfullname} src={profileImgSrc} bg="gray.300"/>
       </Flex>
     </Flex>
   );
@@ -71,10 +68,10 @@ function ProfileBox({user}) {
   return(
     <Flex w="90%" p="6" borderRadius="xl" bg="gray.100" direction="column">
       <Box display="inline-flex">
-        <Avatar size="lg" name={user.fullname} src={user.img} bg="gray.50" boxShadow="md" color="black"/>
+        <Avatar size="md" name={user.fullname} src={user.img} bg="gray.50" boxShadow="md" color="black"/>
         <Box ml="4">
-          <Text fontSize="2xl" fontWeight="medium" >{user.fullname}</Text>
-          <Text fontSize="md" color="gray.600">{user.title} | {user.university}</Text>
+          <Text fontSize="xl" fontWeight="medium" >{user.fullname}</Text>
+          <Text fontSize="sm" color="gray.600">{user.title} | {user.university}</Text>
         </Box>
       </Box>
     </Flex>

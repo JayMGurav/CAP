@@ -16,11 +16,11 @@ const USERS = gql`
 
 
 export default function Home() {
-  const { user, loading } = useAuth();;
+  // const { user, loading } = useAuth();;
   const { loading:dataLoading, error, data } = useQuery(USERS);
 
-  console.log({user,loading});
-  console.log({data,error, dataLoading});
+  // // console.log({user,loading});
+  // console.log({data,error, dataLoading});
   
   return (
     <DashboardShell>

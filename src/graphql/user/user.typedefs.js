@@ -11,7 +11,7 @@ const userTypeDefs = gql`
 
   type Query {
     users: [User!]
-    me(id:ID!): User!
+    me(): User!
     isUser(email:String!): Boolean!
   }
 

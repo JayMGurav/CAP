@@ -11,9 +11,13 @@ let magic = new Magic(process.env.MAGIC_SECRET_KEY);
 const apolloServer = new ApolloServer({
   schema,
   context: async ({ req }) => {
-
-    const didToken = magic.utils.parseAuthorizationHeader(req.headers.authorization);
-    const user = await new Magic(process.env.MAGIC_SECRET_KEY).users.getMetadataByToken(didToken)
+    
+    let user = null, authHeader = req.headers.authorization;
+    
+    if(authHeader){
+      const didToken = magic.utils.parseAuthorizationHeader(req.headers.authorization);
+       user = await new Magic(process.env.MAGIC_SECRET_KEY).users.getMetadataByToken(didToken);
+    }
 
 
     if(!db){
